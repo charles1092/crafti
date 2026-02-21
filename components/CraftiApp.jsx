@@ -6820,10 +6820,10 @@ The Leadership Team`);
             <div className="flex items-center gap-3">
               <img src="/logo.png" alt="Crafti" className="w-10 h-10" />
               <h1 className="text-2xl" style={{color: '#1B2541', fontFamily: "'Nunito', sans-serif", fontWeight: 800}}>crafti</h1>
-              <span className="text-lg text-gray-300 ml-1" style={{fontFamily: "'Nunito', sans-serif", fontWeight: 600}}>
+              <span className="text-lg ml-1" style={{color: '#1B2541', fontFamily: "'Nunito', sans-serif", fontWeight: 300}}>
                 |
               </span>
-              <span className="text-lg text-gray-400" style={{fontFamily: "'Nunito', sans-serif", fontWeight: 600}}>
+              <span className="text-lg" style={{color: '#1B2541', fontFamily: "'Nunito', sans-serif", fontWeight: 300}}>
                 AI Communications Toolkit
               </span>
             </div>
