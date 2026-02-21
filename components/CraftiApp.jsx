@@ -1233,25 +1233,64 @@ Write professional corporate communication that:
 3. Uses British English spelling (analyse, organise, etc.)
 4. Is appropriate length for ${contentType}
 
-${contentType === 'Media release' ? `
-MEDIA RELEASE STYLE REQUIREMENTS:
-- Write in third person (the company writes about itself in third person for journalistic use)
-- Use FACTUAL, news-focused language - avoid promotional adjectives like "renowned", "leading", "premier" in body text
-- Keep body text neutral and newsworthy - save personality and promotional language for QUOTES
-- Focus on facts: what happened, who is involved, when, why it matters, what the impact is
-- Quotes should contain the company's voice, enthusiasm, and strategic messaging
-- Follow standard media release structure: headline, dateline, lead paragraph, body, boilerplate, contact info
-` : ''}
+IMPORTANT: You are writing a "${contentType}" in the "${category}" category. This is NOT a media release unless specifically stated. Match the format, tone, and structure to this exact content type.
 
-${category === 'Internal' ? `
-INTERNAL COMMUNICATION REQUIREMENTS:
-- This is an INTERNAL communication to employees/team members, NOT external stakeholders
-- Use appropriate internal salutations: "Dear Team", "Dear Colleagues", "Team", or "Hello everyone" - NEVER "Dear Stakeholders"
-- Write in a direct, authentic voice as if leadership is speaking directly to their team
-- Focus on transparency, clarity, and building connection with employees
-- Use "we", "our team", "our people" language to create inclusion
-- Address employee-specific concerns and perspectives
-` : ''}
+${(() => {
+  const typeInstructions = {
+    // Internal
+    "Leadership announcement": `STYLE: Internal leadership communication.\n- Address employees directly: "Dear Team", "Dear Colleagues"\n- Write from leadership perspective, first person plural ("we")\n- Be transparent, direct, and inspiring\n- Focus on what this means for the team`,
+    "Company-wide update": `STYLE: Internal company update.\n- Address all employees: "Team", "Everyone"\n- Clear, concise update format\n- Cover: what's happening, why it matters, what comes next\n- Use inclusive "we/our" language`,
+    "Organisational change": `STYLE: Internal change communication.\n- Sensitive, empathetic tone\n- Address employee concerns directly\n- Explain the why, what, and how\n- Provide timeline and next steps\n- Acknowledge impact on people`,
+    "Policy update": `STYLE: Internal policy communication.\n- Clear, straightforward language\n- State what's changing, when, and why\n- Include specific actions employees need to take\n- Provide where to go for questions`,
+    "Team communication": `STYLE: Informal internal team message.\n- Conversational but professional\n- Direct and action-oriented\n- Short paragraphs, easy to scan\n- Clear next steps or asks`,
+    "Internal newsletter": `STYLE: Internal newsletter format.\n- Multiple sections with clear headings\n- Mix of updates, achievements, and upcoming events\n- Engaging, warm tone\n- Brief items that link to more detail`,
+    "Onboarding material": `STYLE: New employee onboarding content.\n- Welcoming, friendly tone\n- Clear, step-by-step information\n- Anticipate common questions\n- Make new starters feel included`,
+    "Change management": `STYLE: Change management communication.\n- Structured around: why change, what's changing, how it affects people, support available\n- Empathetic but forward-looking\n- Address resistance points proactively\n- Clear timeline and milestones`,
+    // Corporate & regulatory
+    "Media release": `STYLE: Media/press release.\n- Third person throughout (company refers to itself in third person)\n- FACTUAL, news-focused language - no promotional adjectives in body\n- Standard structure: headline, dateline, lead paragraph, body, quotes, boilerplate, contact\n- Quotes contain the company's voice and strategic messaging\n- Newsworthy angle in the first paragraph`,
+    "ASX announcement": `STYLE: ASX market announcement.\n- Formal regulatory language\n- Factual, precise, no speculation\n- Follow continuous disclosure obligations\n- Include material information clearly\n- No promotional language`,
+    "Investor update": `STYLE: Investor communication.\n- Professional, data-informed tone\n- Focus on performance, strategy, and outlook\n- Balance transparency with confidence\n- Include relevant metrics and context`,
+    "Shareholder communication": `STYLE: Shareholder letter/communication.\n- Formal but accessible\n- Focus on value creation and governance\n- Forward-looking statements clearly marked\n- Balanced view of achievements and challenges`,
+    "Board communication": `STYLE: Board-level communication.\n- Executive summary format\n- Concise, strategic focus\n- Data-driven with clear recommendations\n- Risk and opportunity framing`,
+    "Annual report narrative": `STYLE: Annual report narrative section.\n- Authoritative, reflective tone\n- Balance achievements with honest assessment\n- Strategic outlook and vision\n- Stakeholder-focused language`,
+    "Crisis communication": `STYLE: Crisis communication.\n- Empathetic, transparent, and urgent\n- Lead with what happened and what's being done\n- Acknowledge impact on affected parties\n- Provide clear actions and next steps\n- Avoid speculation, stick to facts`,
+    "AGM material": `STYLE: Annual General Meeting material.\n- Formal governance language\n- Structured for shareholder audience\n- Cover required statutory content\n- Clear resolutions and explanations`,
+    // Marketing
+    "Campaign messaging": `STYLE: Marketing campaign copy.\n- Persuasive, benefit-led messaging\n- Clear value proposition\n- Compelling headline and supporting copy\n- Call to action\n- Brand voice aligned`,
+    "Brand announcement": `STYLE: Brand announcement.\n- Exciting, confident tone\n- Lead with what's new and why it matters\n- Emphasise brand story and values\n- Suitable for external audiences and media`,
+    "Product launch": `STYLE: Product launch communication.\n- Lead with the customer benefit\n- Clear feature-to-benefit messaging\n- Build excitement and urgency\n- Include availability, pricing context if relevant\n- Strong call to action`,
+    "Website copy": `STYLE: Website page copy.\n- Scannable with clear headings and short paragraphs\n- Benefit-focused, customer-centric language\n- SEO-friendly natural language\n- Clear calls to action\n- Concise and punchy`,
+    "Social media content": `STYLE: Social media post(s).\n- Platform-appropriate length and tone\n- Engaging, conversational, scroll-stopping\n- Include suggested hashtags\n- Clear call to action or engagement prompt\n- Can include multiple post variations`,
+    "Event promotion": `STYLE: Event promotional copy.\n- Build excitement and urgency\n- Cover: what, when, where, why attend\n- Highlight key speakers, activities, or benefits\n- Clear registration/RSVP call to action\n- Create FOMO (fear of missing out)`,
+    "External newsletter": `STYLE: External newsletter.\n- Engaging subject line suggestion\n- Multiple sections with clear headings\n- Value-driven content for subscribers\n- Mix of news, insights, and calls to action\n- Professional but personable`,
+    "Advertising copy": `STYLE: Advertising copy.\n- Attention-grabbing headline\n- Concise, persuasive body copy\n- Clear unique selling proposition\n- Strong call to action\n- Can include variations for different formats (short/long)`,
+    "Sales enablement": `STYLE: Sales enablement content.\n- Focus on customer pain points and solutions\n- Include objection-handling language\n- Value proposition clearly articulated\n- Proof points and social proof\n- Easy for sales team to customise`,
+    // Customer
+    "Service update": `STYLE: Customer service update.\n- Clear, helpful tone\n- Explain what's changing and when\n- Focus on customer impact and benefits\n- Provide support contact information\n- Apologise if there's disruption`,
+    "Account communication": `STYLE: Account/client communication.\n- Professional, relationship-focused\n- Personalised feel\n- Clear purpose and any required actions\n- Maintain trust and partnership tone`,
+    "Customer onboarding": `STYLE: Customer onboarding communication.\n- Welcoming, helpful tone\n- Step-by-step guidance\n- Anticipate common questions\n- Provide support resources\n- Build confidence in their purchase decision`,
+    "Feature update": `STYLE: Feature/product update for customers.\n- Lead with the benefit to the customer\n- Clear explanation of what's new\n- How to access or use the feature\n- Links to documentation or help`,
+    "Contract communication": `STYLE: Contract/agreement communication.\n- Professional, clear language\n- Key terms and dates highlighted\n- Required actions clearly stated\n- Maintain positive relationship tone`,
+    "Support communication": `STYLE: Customer support communication.\n- Empathetic, solution-focused\n- Acknowledge the issue clearly\n- Provide clear resolution or next steps\n- Follow up commitment`,
+    // Thought leadership
+    "Blog post": `STYLE: Blog post.\n- Engaging headline and opening hook\n- Conversational yet authoritative tone\n- Subheadings for scannability\n- Include insights, examples, or data\n- Conclude with takeaway or call to action`,
+    "Whitepaper": `STYLE: Whitepaper/research piece.\n- Authoritative, evidence-based tone\n- Structured sections: executive summary, problem, analysis, solution, conclusion\n- Data and research references\n- Professional, academic-leaning language`,
+    "Opinion piece": `STYLE: Opinion/editorial piece.\n- Strong point of view from the opening\n- Build argument with evidence and examples\n- Acknowledge counterpoints\n- Authoritative, thought-provoking tone\n- Clear conclusion and call to think/act`,
+    "Industry insight": `STYLE: Industry insight/analysis.\n- Expert, analytical tone\n- Cover trends, implications, and predictions\n- Support with data or examples\n- Position the author/company as knowledgeable`,
+    "Case study": `STYLE: Case study.\n- Structure: challenge, solution, results\n- Specific, measurable outcomes where possible\n- Customer perspective and quotes\n- Relatable scenario for target audience`,
+    "LinkedIn article": `STYLE: LinkedIn article.\n- Professional but personal tone\n- Hook in the first 2 lines (visible before "see more")\n- Share perspective, experience, or insight\n- Conversational paragraphs\n- End with a question or discussion prompt`,
+    "Speaking notes": `STYLE: Speaking notes/speech.\n- Written for spoken delivery (conversational, rhythmic)\n- Clear opening, body, conclusion structure\n- Short sentences and natural pauses\n- Memorable phrases and stories\n- Time-appropriate length`,
+    // Personal
+    "Professional email": `STYLE: Professional email.\n- Clear subject line suggestion\n- Appropriate greeting\n- Concise, well-structured body\n- Clear ask or next steps\n- Professional sign-off`,
+    "Follow-up message": `STYLE: Follow-up message.\n- Reference the previous interaction\n- Brief, respectful of their time\n- Clear purpose for following up\n- Easy to respond to`,
+    "Networking outreach": `STYLE: Networking outreach message.\n- Personal, genuine connection\n- Reference something specific about the recipient\n- Clear but soft ask\n- Brief and respectful`,
+    "Thank you note": `STYLE: Thank you note.\n- Warm, sincere tone\n- Specific about what you're thanking them for\n- Mention the impact or meaning\n- Brief and heartfelt`,
+    "Introduction": `STYLE: Professional introduction.\n- Clear context for the introduction\n- Brief background on relevant parties\n- Why the connection is valuable\n- Easy next step suggested`,
+    "Meeting request": `STYLE: Meeting request.\n- Clear purpose for the meeting\n- Suggested time/duration\n- Brief agenda or talking points\n- Easy to accept or suggest alternative`,
+    "Recommendation": `STYLE: Professional recommendation/reference.\n- Specific examples of skills and achievements\n- Genuine, credible tone\n- Relevant to the opportunity\n- Strong endorsement with evidence`
+  };
+  return typeInstructions[contentType] || `STYLE: ${contentType}.\n- Write in the appropriate format and tone for a ${contentType}\n- Match industry conventions for this type of content\n- Ensure the structure and length are appropriate`;
+})()}
 
 CRITICAL INSTRUCTIONS ABOUT PLACEHOLDERS:
 - DO NOT invent specific names, dates, figures, or details you don't have
