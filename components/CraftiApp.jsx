@@ -1119,9 +1119,14 @@ CRITICAL RULES:
           if (summary && !summary.endsWith('.')) summary += '.';
         }
 
-        summary = summary
-          .replace(/^#+\s*/gm, '')
-          .replace(/^\*+\s*/gm, '')
+        const stripMarkdown = (text) => text
+          .replace(/^#{1,6}\s*/gm, '')
+          .replace(/\*\*([^*]+)\*\*/g, '$1')
+          .replace(/\*([^*]+)\*/g, '$1')
+          .replace(/^\s*[-*+]\s+/gm, '')
+          .replace(/^\s*\d+\.\s+/gm, '')
+          .replace(/`([^`]+)`/g, '$1')
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
           .replace(/^PART\s*\d+[:\-\s]*/gi, '')
           .replace(/^SUMMARY[:\-\s]*/gi, '')
           .replace(/^BRIEF SUMMARY[:\-\s]*/gi, '')
@@ -1129,7 +1134,11 @@ CRITICAL RULES:
           .replace(/^I can provide (comprehensive )?information about [^.]+\.\s*/gi, '')
           .replace(/^Let me organiz?e this[^.]*\.\s*/gi, '')
           .replace(/^Here'?s? (is )?(the |a )?(comprehensive )?(summary|information)[^.]*\.\s*/gi, '')
+          .replace(/\n{3,}/g, '\n\n')
           .trim();
+
+        summary = stripMarkdown(summary);
+        fullContext = stripMarkdown(fullContext);
 
         if (!summary || summary.length < 20) {
           const cleanSentences = fullContext
