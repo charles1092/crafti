@@ -1299,10 +1299,86 @@ CRITICAL INSTRUCTIONS ABOUT PLACEHOLDERS:
 - If you need figures/data: **[Insert specific data]**
 - Make placeholders clear and obvious
 
+${(() => {
+  const lengthGuide = {
+    "Social media content": "LENGTH: Short. 1-3 posts, each under 280 characters for Twitter/X or a short paragraph for LinkedIn/Facebook.",
+    "Thank you note": "LENGTH: Short. 3-5 sentences maximum.",
+    "Follow-up message": "LENGTH: Short. 3-6 sentences maximum.",
+    "Meeting request": "LENGTH: Short. 4-6 sentences maximum.",
+    "Introduction": "LENGTH: Short. 4-6 sentences.",
+    "Networking outreach": "LENGTH: Short. 4-6 sentences.",
+    "Professional email": "LENGTH: Medium-short. 1-3 concise paragraphs.",
+    "Advertising copy": "LENGTH: Short-medium. Headline + 2-3 short paragraphs or variations.",
+    "Event promotion": "LENGTH: Medium-short. Headline + key details + call to action. Around 150-250 words.",
+    "Website copy": "LENGTH: Medium. Scannable sections with headings. Around 200-400 words.",
+    "Campaign messaging": "LENGTH: Medium. Key messages + supporting copy. Around 200-400 words.",
+    "Product launch": "LENGTH: Medium. Around 300-500 words.",
+    "Brand announcement": "LENGTH: Medium. Around 300-500 words.",
+    "Service update": "LENGTH: Medium-short. Around 200-350 words.",
+    "Feature update": "LENGTH: Medium-short. Around 200-350 words.",
+    "Account communication": "LENGTH: Medium-short. Around 200-350 words.",
+    "Customer onboarding": "LENGTH: Medium. Around 300-500 words.",
+    "Contract communication": "LENGTH: Medium. Around 300-500 words.",
+    "Support communication": "LENGTH: Medium-short. Around 150-300 words.",
+    "Team communication": "LENGTH: Medium-short. Around 200-350 words.",
+    "Policy update": "LENGTH: Medium. Around 300-500 words.",
+    "Company-wide update": "LENGTH: Medium. Around 300-500 words.",
+    "Leadership announcement": "LENGTH: Medium. Around 400-600 words.",
+    "Organisational change": "LENGTH: Medium-long. Around 400-700 words.",
+    "Change management": "LENGTH: Medium-long. Around 400-700 words.",
+    "Internal newsletter": "LENGTH: Medium-long. Multiple sections, around 500-800 words total.",
+    "External newsletter": "LENGTH: Medium-long. Multiple sections, around 500-800 words total.",
+    "Onboarding material": "LENGTH: Medium-long. Around 500-800 words.",
+    "Sales enablement": "LENGTH: Medium-long. Around 500-800 words.",
+    "Media release": "LENGTH: Medium. Around 400-600 words following standard press release structure.",
+    "Crisis communication": "LENGTH: Medium. Around 300-500 words. Concise and clear.",
+    "Investor update": "LENGTH: Medium-long. Around 500-800 words.",
+    "Shareholder communication": "LENGTH: Medium-long. Around 500-800 words.",
+    "ASX announcement": "LENGTH: Medium. Around 300-500 words. Factual and concise.",
+    "Board communication": "LENGTH: Medium. Around 400-600 words.",
+    "AGM material": "LENGTH: Medium-long. Around 500-800 words.",
+    "Annual report narrative": "LENGTH: Long. Around 800-1200 words.",
+    "Blog post": "LENGTH: Medium-long. Around 600-1000 words.",
+    "LinkedIn article": "LENGTH: Medium. Around 500-800 words.",
+    "Opinion piece": "LENGTH: Medium-long. Around 600-1000 words.",
+    "Industry insight": "LENGTH: Medium-long. Around 600-1000 words.",
+    "Speaking notes": "LENGTH: Medium-long. Around 600-1000 words (roughly 5-8 minutes of speaking).",
+    "Case study": "LENGTH: Medium-long. Around 600-1000 words.",
+    "Whitepaper": "LENGTH: Long. Around 1500-2500 words with structured sections.",
+    "Recommendation": "LENGTH: Medium. Around 300-500 words."
+  };
+  return lengthGuide[contentType] || `LENGTH: Appropriate length for a ${contentType}.`;
+})()}
+
 ${buildStyleContext()}
 Write ONLY the content itself - no preamble.`;
 
-      const result = await callClaude(prompt, 2000);
+      const tokensByType = {
+        "Social media content": 800,
+        "Thank you note": 500,
+        "Follow-up message": 600,
+        "Meeting request": 500,
+        "Introduction": 600,
+        "Networking outreach": 600,
+        "Professional email": 800,
+        "Advertising copy": 1000,
+        "Event promotion": 1000,
+        "Website copy": 1200,
+        "Support communication": 800,
+        "Whitepaper": 4000,
+        "Annual report narrative": 3000,
+        "Blog post": 2500,
+        "Opinion piece": 2500,
+        "Industry insight": 2500,
+        "Case study": 2500,
+        "Speaking notes": 2500,
+        "LinkedIn article": 2000,
+        "Internal newsletter": 2000,
+        "External newsletter": 2000,
+      };
+      const maxTokens = tokensByType[contentType] || 2000;
+
+      const result = await callClaude(prompt, maxTokens);
       cleanup();
       // Save to version history (first version)
       setCreateVersionHistory([result]);
