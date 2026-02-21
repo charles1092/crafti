@@ -4013,14 +4013,9 @@ Apply these style guidelines throughout the content while maintaining the other 
   const renderLanding = () => (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-3 mb-6">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="48" height="48" rx="12" fill="#1B2541"/>
-            <path d="M14 18C14 16.8954 14.8954 16 16 16H28C29.1046 16 30 16.8954 30 18V20C30 21.1046 29.1046 22 28 22H16C14.8954 22 14 21.1046 14 20V18Z" fill="white" opacity="0.9"/>
-            <path d="M18 26C18 24.8954 18.8954 24 20 24H32C33.1046 24 34 24.8954 34 26V28C34 29.1046 33.1046 30 32 30H20C18.8954 30 18 29.1046 18 28V26Z" fill="white" opacity="0.7"/>
-            <path d="M14 32C14 31.4477 14.4477 31 15 31H25C25.5523 31 26 31.4477 26 32C26 32.5523 25.5523 33 25 33H15C14.4477 33 14 32.5523 14 32Z" fill="white" opacity="0.5"/>
-          </svg>
-          <h1 className="text-4xl font-bold" style={{color: '#1B2541'}}>crafti</h1>
+        <div className="inline-flex items-center gap-4 mb-6">
+          <img src="/logo.png" alt="Crafti" className="w-14 h-14" />
+          <h1 className="text-4xl" style={{color: '#1B2541', fontFamily: "'Nunito', sans-serif", fontWeight: 700}}>crafti</h1>
         </div>
         <p className="text-lg text-gray-500 max-w-2xl mx-auto">
           Create and analyse professional communications with AI-powered stakeholder insights and critical perspectives
@@ -6823,18 +6818,14 @@ The Leadership Team`);
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="48" height="48" rx="12" fill="#1B2541"/>
-                <path d="M14 18C14 16.8954 14.8954 16 16 16H28C29.1046 16 30 16.8954 30 18V20C30 21.1046 29.1046 22 28 22H16C14.8954 22 14 21.1046 14 20V18Z" fill="white" opacity="0.9"/>
-                <path d="M18 26C18 24.8954 18.8954 24 20 24H32C33.1046 24 34 24.8954 34 26V28C34 29.1046 33.1046 30 32 30H20C18.8954 30 18 29.1046 18 28V26Z" fill="white" opacity="0.7"/>
-                <path d="M14 32C14 31.4477 14.4477 31 15 31H25C25.5523 31 26 31.4477 26 32C26 32.5523 25.5523 33 25 33H15C14.4477 33 14 32.5523 14 32Z" fill="white" opacity="0.5"/>
-              </svg>
-              <h1 className="text-xl font-bold" style={{color: '#1B2541'}}>crafti</h1>
-              <div className="border-l border-gray-300 pl-3 ml-1">
-                <p className="text-xs text-gray-400 uppercase tracking-wider">
-                  AI Communications Toolkit
-                </p>
-              </div>
+              <img src="/logo.png" alt="Crafti" className="w-8 h-8" />
+              <h1 className="text-xl" style={{color: '#1B2541', fontFamily: "'Nunito', sans-serif", fontWeight: 700}}>crafti</h1>
+              <span className="text-sm text-gray-400 ml-1" style={{fontFamily: "'Nunito', sans-serif", fontWeight: 600}}>
+                |
+              </span>
+              <span className="text-sm text-gray-400" style={{fontFamily: "'Nunito', sans-serif", fontWeight: 600}}>
+                AI Communications Toolkit
+              </span>
             </div>
 
             {mode !== 'landing' && (
