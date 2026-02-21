@@ -4013,11 +4013,16 @@ Apply these style guidelines throughout the content while maintaining the other 
   const renderLanding = () => (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 border-2" style={{backgroundColor: '#6C5CE7', borderColor: '#6C5CE7'}}>
-          <Sparkles className="w-10 h-10 text-white" />
+        <div className="inline-flex items-center gap-3 mb-6">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="48" height="48" rx="12" fill="#1B2541"/>
+            <path d="M14 18C14 16.8954 14.8954 16 16 16H28C29.1046 16 30 16.8954 30 18V20C30 21.1046 29.1046 22 28 22H16C14.8954 22 14 21.1046 14 20V18Z" fill="white" opacity="0.9"/>
+            <path d="M18 26C18 24.8954 18.8954 24 20 24H32C33.1046 24 34 24.8954 34 26V28C34 29.1046 33.1046 30 32 30H20C18.8954 30 18 29.1046 18 28V26Z" fill="white" opacity="0.7"/>
+            <path d="M14 32C14 31.4477 14.4477 31 15 31H25C25.5523 31 26 31.4477 26 32C26 32.5523 25.5523 33 25 33H15C14.4477 33 14 32.5523 14 32Z" fill="white" opacity="0.5"/>
+          </svg>
+          <h1 className="text-4xl font-bold" style={{color: '#1B2541'}}>crafti</h1>
         </div>
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Crafti</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg text-gray-500 max-w-2xl mx-auto">
           Create and analyse professional communications with AI-powered stakeholder insights and critical perspectives
         </p>
       </div>
@@ -4045,7 +4050,7 @@ Apply these style guidelines throughout the content while maintaining the other 
                 <button
                   onClick={checkCompanyKnowledge}
                   disabled={!companyName.trim() || isCheckingKnowledge}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-1.5 text-xs rounded-md font-medium transition-colors flex items-center gap-1.5"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-1.5 text-xs rounded-md font-medium transition-colors flex items-center gap-1.5"
                 >
                   {isCheckingKnowledge ? (
                     <>
@@ -4069,7 +4074,7 @@ Apply these style guidelines throughout the content while maintaining the other 
           {knowledgeCheckResult === 'confident' && !companyKnowledgeValidated && (
             <div className="bg-gray-100 border-l-4 border-gray-700 p-3 rounded">
               <div className="flex items-start gap-2">
-                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{color: '#6C5CE7'}} />
+                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{color: '#1B2541'}} />
                 <div>
                   <p className="text-sm font-semibold text-gray-900">Knowledge Confirmed</p>
                   <p className="text-xs text-gray-700 mt-0.5">I have sufficient context about {companyName} to create professional communications.</p>
@@ -4092,7 +4097,7 @@ Apply these style guidelines throughout the content while maintaining the other 
                   <div className="flex gap-2 mt-3">
                     <button
                       onClick={() => confirmProbableCompany(true)}
-                      className="bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white px-4 py-1.5 text-sm rounded-lg font-medium transition-colors"
+                      className="bg-[#1B2541] hover:bg-[#131C33] text-white px-4 py-1.5 text-sm rounded-lg font-medium transition-colors"
                     >
                       Yes, that's correct
                     </button>
@@ -4139,7 +4144,7 @@ Apply these style guidelines throughout the content while maintaining the other 
                   <button
                     onClick={searchCompanyWebsite}
                     disabled={!companyWebsiteUrl.trim() || isSearchingWebsite}
-                    className="bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 text-sm rounded-lg font-medium transition-colors flex items-center gap-2 whitespace-nowrap"
+                    className="bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 text-sm rounded-lg font-medium transition-colors flex items-center gap-2 whitespace-nowrap"
                   >
                     {isSearchingWebsite ? (
                       <>
@@ -4232,7 +4237,7 @@ Apply these style guidelines throughout the content while maintaining the other 
                 <button
                   onClick={proceedWithCompanyContext}
                   disabled={!companyContext.trim() && companyContextFiles.length === 0}
-                  className="mt-3 bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-5 py-2 text-sm rounded-lg font-semibold transition-colors"
+                  className="mt-3 bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-5 py-2 text-sm rounded-lg font-semibold transition-colors"
                 >
                   Proceed with Manual Context
                 </button>
@@ -4244,7 +4249,7 @@ Apply these style guidelines throughout the content while maintaining the other 
             <div className="bg-gray-50 p-3 rounded-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-gray-700">
-                  <CheckCircle className="w-4 h-4" style={{color: '#6C5CE7'}} />
+                  <CheckCircle className="w-4 h-4" style={{color: '#1B2541'}} />
                   <span className="text-sm font-medium">Company: {companyName}</span>
                   {websiteContext && (
                     <span className="text-xs text-gray-500 ml-2">(via web search)</span>
@@ -4292,28 +4297,28 @@ Apply these style guidelines throughout the content while maintaining the other 
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Capabilities</h2>
         <div className="grid grid-cols-2 gap-6">
           <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#6C5CE7'}} />
+            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#1B2541'}} />
             <div>
               <p className="font-medium text-gray-900">Create professional communications</p>
               <p className="text-sm text-gray-600">Generate drafts for media releases, announcements, internal updates and more</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#6C5CE7'}} />
+            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#1B2541'}} />
             <div>
               <p className="font-medium text-gray-900">Refine and strengthen content</p>
               <p className="text-sm text-gray-600">Analyse existing drafts for clarity, tone, structure and stakeholder impact</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#6C5CE7'}} />
+            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#1B2541'}} />
             <div>
               <p className="font-medium text-gray-900">Apply custom writing styles</p>
               <p className="text-sm text-gray-600">Upload style guides and apply consistent tone across all communications</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#6C5CE7'}} />
+            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{color: '#1B2541'}} />
             <div>
               <p className="font-medium text-gray-900">Save and manage drafts</p>
               <p className="text-sm text-gray-600">Keep work in progress and return to refine later</p>
@@ -4425,7 +4430,7 @@ Apply these style guidelines throughout the content while maintaining the other 
             </div>
           </div>
           <div className="mt-6">
-            <div style={{backgroundColor: '#6C5CE7'}} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white group-hover:gap-3 transition-all">
+            <div style={{backgroundColor: '#1B2541'}} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white group-hover:gap-3 transition-all">
               Get Started <span>→</span>
             </div>
           </div>
@@ -4461,7 +4466,7 @@ Apply these style guidelines throughout the content while maintaining the other 
             </div>
           </div>
           <div className="mt-6">
-            <div style={{backgroundColor: '#6C5CE7'}} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white group-hover:gap-3 transition-all">
+            <div style={{backgroundColor: '#1B2541'}} className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-white group-hover:gap-3 transition-all">
               Get Started <span>→</span>
             </div>
           </div>
@@ -4653,7 +4658,7 @@ Apply these style guidelines throughout the content while maintaining the other 
           <button
             onClick={generateContent}
             disabled={!contentType || isGenerating}
-            className="w-full bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 px-6 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2"
+            className="w-full bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-4 px-6 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center gap-2"
           >
             {isGenerating ? (
               <>
@@ -4730,7 +4735,7 @@ Apply these style guidelines throughout the content while maintaining the other 
                   </button>
                   <button
                     onClick={sendToAnalyse}
-                    className="text-sm bg-[#6C5CE7] hover:bg-[#5A4BD1] text-white px-3 py-1.5 rounded font-medium transition-colors flex items-center gap-1"
+                    className="text-sm bg-[#1B2541] hover:bg-[#131C33] text-white px-3 py-1.5 rounded font-medium transition-colors flex items-center gap-1"
                   >
                     <TrendingUp className="w-4 h-4" />
                     Open in refine and analyse
@@ -4856,7 +4861,7 @@ Apply these style guidelines throughout the content while maintaining the other 
                 <button
                   onClick={refineCreatedContent}
                   disabled={!createChatInput.trim() || isRefiningCreate || isApplyingCreateSuggestions}
-                  className="bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+                  className="bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
                 >
                   {isRefiningCreate ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 </button>
@@ -6166,7 +6171,7 @@ The Leadership Team`);
                     <button
                       onClick={loadContent}
                       disabled={!content.trim() || countWords(content) > MAX_CONTENT_WORDS}
-                      className="w-full bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                      className="w-full bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                     >
                       <Sparkles className="w-5 h-5" />
                       Load content
@@ -6312,7 +6317,7 @@ The Leadership Team`);
                         <button
                           onClick={applyActionItems}
                           disabled={isApplyingActionItems}
-                          className="flex-1 bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                          className="flex-1 bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
                         >
                           {isApplyingActionItems ? (
                             <>
@@ -6421,7 +6426,7 @@ The Leadership Team`);
                     <button
                       onClick={() => sendChatMessage()}
                       disabled={!chatInput.trim() || isChattingAnalyse}
-                      className="bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+                      className="bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
                     >
                       {isChattingAnalyse ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                     </button>
@@ -6447,7 +6452,7 @@ The Leadership Team`);
               <button
                 onClick={suggestBestTools}
                 disabled={!workspaceContent.trim() || isSuggestingTools}
-                className="bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                className="bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
               >
                 {isSuggestingTools ? (
                   <>
@@ -6817,12 +6822,16 @@ The Leadership Team`);
       <div className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div>
-                <h1 className="text-2xl font-bold" style={{color: '#6C5CE7'}}>Crafti</h1>
-              </div>
-              <div className="border-l-2 border-gray-300 pl-6 h-12 flex flex-col justify-center">
-                <p className="text-sm text-gray-500 leading-tight">
+            <div className="flex items-center gap-3">
+              <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="12" fill="#1B2541"/>
+                <path d="M14 18C14 16.8954 14.8954 16 16 16H28C29.1046 16 30 16.8954 30 18V20C30 21.1046 29.1046 22 28 22H16C14.8954 22 14 21.1046 14 20V18Z" fill="white" opacity="0.9"/>
+                <path d="M18 26C18 24.8954 18.8954 24 20 24H32C33.1046 24 34 24.8954 34 26V28C34 29.1046 33.1046 30 32 30H20C18.8954 30 18 29.1046 18 28V26Z" fill="white" opacity="0.7"/>
+                <path d="M14 32C14 31.4477 14.4477 31 15 31H25C25.5523 31 26 31.4477 26 32C26 32.5523 25.5523 33 25 33H15C14.4477 33 14 32.5523 14 32Z" fill="white" opacity="0.5"/>
+              </svg>
+              <h1 className="text-xl font-bold" style={{color: '#1B2541'}}>crafti</h1>
+              <div className="border-l border-gray-300 pl-3 ml-1">
+                <p className="text-xs text-gray-400 uppercase tracking-wider">
                   AI Communications Toolkit
                 </p>
               </div>
@@ -6831,7 +6840,7 @@ The Leadership Team`);
             {mode !== 'landing' && (
               <button
                 onClick={reset}
-                style={{ backgroundColor: '#6C5CE7' }}
+                style={{ backgroundColor: '#1B2541' }}
                 className="hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2"
               >
                 <Home className="w-4 h-4" />
@@ -6925,7 +6934,7 @@ The Leadership Team`);
                       <button
                         onClick={() => updateStyle(editingStyle.id, editingStyle.name, editingStyle.content)}
                         disabled={!editingStyle.name.trim()}
-                        className="bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                        className="bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                       >
                         Save Changes
                       </button>
@@ -7075,7 +7084,7 @@ The Leadership Team`);
                             }
                           }}
                           disabled={!newStyleName.trim() || !newStyleContent.trim()}
-                          className="w-full bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm"
+                          className="w-full bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm"
                         >
                           <Plus className="w-4 h-4" />
                           Add Style
@@ -7160,7 +7169,7 @@ The Leadership Team`);
               <button
                 onClick={saveComm}
                 disabled={!saveModalName.trim() || isGeneratingSuggestedName}
-                className="px-4 py-2 text-sm font-medium text-white bg-[#6C5CE7] hover:bg-[#5A4BD1] disabled:bg-gray-300 disabled:cursor-not-allowed rounded-lg transition-colors flex items-center gap-2"
+                className="px-4 py-2 text-sm font-medium text-white bg-[#1B2541] hover:bg-[#131C33] disabled:bg-gray-300 disabled:cursor-not-allowed rounded-lg transition-colors flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 {editingCommId ? 'Update' : 'Save'}
